@@ -4,4 +4,6 @@ const userContoller = require('../../controllers/userController');
 
 router.get('/', userContoller.getAllUsers);
 
+router.get('/:id', userContoller.getMovieById);
+
 module.exports = router;
