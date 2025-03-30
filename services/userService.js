@@ -1,11 +1,11 @@
-const userRepository = require('../repositories/userRepository');
+const movieRepository = require('../repositories/movieRepository');
 
-exports.getAllUsers = async () => {
+exports.getAllMovies = async () => {
   // You can add business logic or validations here
-  return userRepository.getAllUsers();
+  return movieRepository.getAllMovies();
 }
 
 exports.getMovieById = async (id) => {
-  const movie = await userRepository.getMovieById(id);
+  const movie = await movieRepository.getMovieById(id);
   return movie;
 }
