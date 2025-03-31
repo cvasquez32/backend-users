@@ -1,10 +1,19 @@
-const movieRepository = require('../repositories/movieRepository');
+const movieRepository = require("../repositories/movieRepository");
 
 exports.getAllMovies = async () => {
   return movieRepository.getAllMovies();
-}
+};
 
 exports.getMovieById = async (id) => {
   const movie = await movieRepository.getMovieById(id);
   return movie;
-}
+};
+
+exports.deleteMovieById = async (id) => {
+  const result = await movieRepository.deleteMovieById(id);
+
+  if (result.affectedRows === 0) {
+    return null;
+  }
+  return result;
+};

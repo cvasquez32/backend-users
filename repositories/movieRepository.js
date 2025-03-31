@@ -21,3 +21,17 @@ exports.getMovieById = (id) => {
     );
   });
 };
+
+exports.deleteMovieById = (id) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      "DELETE FROM `movie-titles` WHERE id = ?",
+      [id],
+      (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      }
+    );
+  });
+};
+
