@@ -1,7 +1,6 @@
 const movieRepository = require('../repositories/movieRepository');
 
 exports.getAllMovies = async () => {
-  // You can add business logic or validations here
   return movieRepository.getAllMovies();
 }
 

@@ -4,7 +4,7 @@ const port = 3000;
 
 app.use(express.json());
 
-app.use("/api/v1/users", require("./v1/routes/userRoutes"));
+app.use("/api/v1/movie", require("./v1/routes/movieRoutes"));
 
 app.listen(port, () => {
   console.log(`Server Running at http://localhost:${port}`);
