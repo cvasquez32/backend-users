@@ -5,7 +5,7 @@ exports.getAllMovies = async (req, res) => {
     const movies = await movieService.getAllMovies();
     res.json(movies);
   } catch (error) {
-    res.status(500).json({ error: message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -17,6 +17,23 @@ exports.getMovieById = async (req, res) => {
       return res.status(404).json({ error: "Movie not found" });
     }
     res.json(movie);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.createMovie = async (req, res) => {
+  const { body } = req;
+  if (!body.title || !body.date) {
+    return;
+  }
+  const newMovie = {
+    title: body.title,
+    date: body.date
+  };
+  try {
+    const createMovie = await movieService.createMovie(newMovie);
+    res.status(201).send({ status: "OK", data: createMovie });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

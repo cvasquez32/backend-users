@@ -7,3 +7,5 @@ node_modules/
 # Ignore logs
 logs
 *.log
+
+.vscode

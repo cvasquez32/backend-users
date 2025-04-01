@@ -9,6 +9,16 @@ exports.getMovieById = async (id) => {
   return movie;
 };
 
+exports.createMovie = async (newMovie) => {
+  let { title, date } = newMovie;
+  const movie = await movieRepository.createMovie(title, date);
+
+  if (movie.affectedRows === 0) {
+    return null;
+  }
+  return movie;
+};
+
 exports.deleteMovieById = async (id) => {
   const result = await movieRepository.deleteMovieById(id);
 
