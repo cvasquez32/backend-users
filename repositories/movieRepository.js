@@ -11,14 +11,10 @@ exports.getAllMovies = () => {
 
 exports.getMovieById = (id) => {
   return new Promise((resolve, reject) => {
-    db.query(
-      "SELECT * FROM movies WHERE id = ?",
-      [id],
-      (err, results) => {
-        if (err) return reject(err);
-        resolve(results[0]);
-      }
-    );
+    db.query("SELECT * FROM movies WHERE id = ?", [id], (err, results) => {
+      if (err) return reject(err);
+      resolve(results[0]);
+    });
   });
 };
 
@@ -37,14 +33,9 @@ exports.createMovie = (title, date) => {
 
 exports.deleteMovieById = (id) => {
   return new Promise((resolve, reject) => {
-    db.query(
-      "DELETE FROM movies VALUES ()",
-      [id],
-      (err, results) => {
-        if (err) return reject(err);
-        resolve(results);
-      }
-    );
+    db.query("DELETE FROM movies VALUES ()", [id], (err, results) => {
+      if (err) return reject(err);
+      resolve(results);
+    });
   });
 };
-

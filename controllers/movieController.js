@@ -29,7 +29,7 @@ exports.createMovie = async (req, res) => {
   }
   const newMovie = {
     title: body.title,
-    date: body.date
+    date: body.date,
   };
   try {
     const createMovie = await movieService.createMovie(newMovie);
