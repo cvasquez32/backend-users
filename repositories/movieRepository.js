@@ -2,7 +2,7 @@ const db = require("../db");
 
 exports.getAllMovies = () => {
   return new Promise((resolve, reject) => {
-    db.query("SELECT * FROM `movie-titles`", (err, results) => {
+    db.query("SELECT * FROM `movies`", (err, results) => {
       if (err) return reject(err);
       resolve(results);
     });
@@ -12,7 +12,7 @@ exports.getAllMovies = () => {
 exports.getMovieById = (id) => {
   return new Promise((resolve, reject) => {
     db.query(
-      "SELECT * FROM `movie-titles` WHERE id = ?",
+      "SELECT * FROM `movies` WHERE id = ?",
       [id],
       (err, results) => {
         if (err) return reject(err);
@@ -25,7 +25,7 @@ exports.getMovieById = (id) => {
 exports.deleteMovieById = (id) => {
   return new Promise((resolve, reject) => {
     db.query(
-      "DELETE FROM `movie-titles` WHERE id = ?",
+      "DELETE FROM `movies` WHERE id = ?",
       [id],
       (err, results) => {
         if (err) return reject(err);
