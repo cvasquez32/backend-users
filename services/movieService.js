@@ -24,7 +24,7 @@ exports.updateMovieById = async (updateMovie) => {
   const result = await movieRepository.updateMovieById(title, date, id);
 
   if (result.affectedRows === 0) {
-    return null;
+    return "0 affected Rows, Please Make Sure ID is Valid";
   }
   return result;
 };

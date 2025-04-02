@@ -52,7 +52,7 @@ exports.updateMovieById = async (req, res) => {
   };
   try {
     const updateMovieById = await movieService.updateMovieById(updateMovie);
-    res.status(201).send({ status: "OK", data: updateMovieById });
+    res.status(201).send({ data: updateMovieById });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
