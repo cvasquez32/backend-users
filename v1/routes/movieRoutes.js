@@ -6,6 +6,8 @@ router.get("/", movieController.getAllMovies);
 
 router.get("/:id", movieController.getMovieById);
 
+router.put("/:id", movieController.updateMovieById);
+
 router.post("/", movieController.createMovie);
 
 router.delete("/:id", movieController.deleteMovieById);

@@ -39,6 +39,25 @@ exports.createMovie = async (req, res) => {
   }
 };
 
+exports.updateMovieById = async (req, res) => {
+  const movieId = req.params.id;
+  const { body } = req;
+  if (!movieId || !body.title || !body.date) {
+    return;
+  }
+  const updateMovie = {
+    id: movieId,
+    title: body.title,
+    date: body.date,
+  };
+  try {
+    const updateMovieById = await movieService.updateMovieById(updateMovie);
+    res.status(201).send({ status: "OK", data: updateMovieById });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 exports.deleteMovieById = async (req, res) => {
   const movieId = req.params.id;
   try {

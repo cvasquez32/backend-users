@@ -31,9 +31,22 @@ exports.createMovie = (title, date) => {
   });
 };
 
+exports.updateMovieById = (title, date, id) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      "UPDATE movies SET title = ?, date = ? WHERE id = ?",
+      [title, date, id],
+      (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      }
+    );
+  });
+};
+
 exports.deleteMovieById = (id) => {
   return new Promise((resolve, reject) => {
-    db.query("DELETE FROM movies VALUES ()", [id], (err, results) => {
+    db.query("DELETE FROM movies WHERE id = ?", [id], (err, results) => {
       if (err) return reject(err);
       resolve(results);
     });
