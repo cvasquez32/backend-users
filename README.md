@@ -2,7 +2,11 @@
 
 This API is designed for rating movies.
 
-## Technologies Used
+## Frontend Technologies Used
+
+- **React.js**
+
+## Backend Technologies Used
 
 - **Node.js**
 - **Express**
