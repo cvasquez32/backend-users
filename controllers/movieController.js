@@ -24,12 +24,13 @@ exports.getMovieById = async (req, res) => {
 
 exports.createMovie = async (req, res) => {
   const { body } = req;
-  if (!body.title || !body.date) {
+  if (!body.title || !body.date || !body.production_budget) {
     return;
   }
   const newMovie = {
     title: body.title,
     date: body.date,
+    production_budget: body.production_budget,
   };
   try {
     const createMovie = await movieService.createMovie(newMovie);
