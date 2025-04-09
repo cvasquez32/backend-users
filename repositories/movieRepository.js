@@ -18,11 +18,11 @@ exports.getMovieById = (id) => {
   });
 };
 
-exports.createMovie = (title, date) => {
+exports.createMovie = (title, date, production_cost) => {
   return new Promise((resolve, reject) => {
     db.query(
-      "INSERT INTO movies (title, date) VALUES (?, ?)",
-      [title, date],
+      "INSERT INTO movies (title, date, production_cost) VALUES (?, ?, ?)",
+      [title, date, production_cost],
       (err, results) => {
         if (err) return reject(err);
         resolve(results);
@@ -31,11 +31,11 @@ exports.createMovie = (title, date) => {
   });
 };
 
-exports.updateMovieById = (title, date, id) => {
+exports.updateMovieById = (title, date, production_cost, id) => {
   return new Promise((resolve, reject) => {
     db.query(
-      "UPDATE movies SET title = ?, date = ? WHERE id = ?",
-      [title, date, id],
+      "UPDATE movies SET title = ?, date = ?, production_cost = ? WHERE id = ?",
+      [title, date, id, production_cost],
       (err, results) => {
         if (err) return reject(err);
         resolve(results);
