@@ -27,10 +27,17 @@ exports.createMovie = async (req, res) => {
   if (!body.title || !body.date || !body.production_budget) {
     return;
   }
+
+  const numbericString = body.production_budget
+    .replace(/[$,]/g, "")
+    .split(".")[0];
+
+  const budgetInt = parseInt(numbericString, 10);
+
   const newMovie = {
     title: body.title,
     date: body.date,
-    production_budget: body.production_budget,
+    production_budget: budgetInt,
   };
   try {
     const createMovie = await movieService.createMovie(newMovie);
