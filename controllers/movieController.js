@@ -24,7 +24,7 @@ exports.getMovieById = async (req, res) => {
 
 exports.createMovie = async (req, res) => {
   const { body } = req;
-  if (!body.title || !body.date || !body.production_budget || !body.box_office) {
+  if (!body.title || !body.date || !body.production_budget || !body.box_office || !body.poster_url) {
     return;
   }
 
@@ -44,7 +44,8 @@ exports.createMovie = async (req, res) => {
     title: body.title,
     date: body.date,
     production_budget: budgetInt,
-    box_office: boxOfficeInt
+    box_office: boxOfficeInt,
+    poster_url: body.poster_url
   };
   try {
     const createMovie = await movieService.createMovie(newMovie);
@@ -57,7 +58,7 @@ exports.createMovie = async (req, res) => {
 exports.updateMovieById = async (req, res) => {
   const movieId = req.params.id;
   const { body } = req;
-  if (!movieId || !body.title || !body.date || !body.box_office) {
+  if (!movieId || !body.title || !body.date || !body.box_office || !body.poster_url) {
     return;
   }
   const updateMovie = {
@@ -65,7 +66,8 @@ exports.updateMovieById = async (req, res) => {
     title: body.title,
     date: body.date,
     production_budget: body.production_budget,
-    box_office: body.box_office
+    box_office: body.box_office,
+    poster_url: body.poster_url
   };
   try {
     const updateMovieById = await movieService.updateMovieById(updateMovie);

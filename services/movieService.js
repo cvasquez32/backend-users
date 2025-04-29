@@ -10,8 +10,8 @@ exports.getMovieById = async (id) => {
 };
 
 exports.createMovie = async (newMovie) => {
-  let { title, date, production_budget, box_office } = newMovie;
-  const movie = await movieRepository.createMovie(title, date, production_budget, box_office);
+  let { title, date, production_budget, box_office, poster_url } = newMovie;
+  const movie = await movieRepository.createMovie(title, date, production_budget, box_office, poster_url);
 
   if (movie.affectedRows === 0) {
     return null;
@@ -20,8 +20,8 @@ exports.createMovie = async (newMovie) => {
 };
 
 exports.updateMovieById = async (updateMovie) => {
-  let { title, date, production_budget, box_office, id } = updateMovie;
-  const result = await movieRepository.updateMovieById(title, date, production_budget, box_office, id);
+  let { title, date, production_budget, box_office, poster_url, id } = updateMovie;
+  const result = await movieRepository.updateMovieById(title, date, production_budget, box_office, poster_url, id);
 
   if (result.affectedRows === 0) {
     return "0 affected Rows, Please Make Sure ID is Valid";
